@@ -1,0 +1,22 @@
+.reveal h3 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+.reveal section.two-floating-elements {
+  grid-template-columns: auto 30%;
+}
+
+.two-floating-elements {
+  > ul {
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+  > p {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    float:right;
+  }
+}
