@@ -165,6 +165,7 @@ Note:
 * Additional components - builds, images, routes
 
 * Development - similar to k8s
+![openshift](imgs/openshift-k8s-distro.png)
 
 Note:
 
@@ -175,26 +176,23 @@ Note:
 * An image pointing to other components
 
 * Contains an operator which applies components
-
+![payload](imgs/openshift-payload.png)
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Release controller
 
-* Displays released / nightly versions
-
-* Builds an upgrade graph
+* Displays available official / nightly versions
 
 * Collects test results, shows changelog
-
+![release controller](imgs/release-controller.png)
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Blocking / informing jobs
 
-* Not all jobs are created equal
+Not all jobs are created equal
+![blocking](imgs/blocking-jobs.png)
 
 Note:
 
@@ -202,23 +200,23 @@ Note:
 <!-- .slide: class="two-floating-elements" -->
 ### Cluster bot
 
-* Slack bot to spawn clusters
-
-* Build custom payloads
-
-* Run adhoc test
-
+Slack bot to spawn clusters. Can run adhoc tests, build custom releases
+![blocking](imgs/cluster-bot.png)
 Note:
 
 ---
 <!-- .slide: class="two-floating-elements" -->
 ### Must gather
 
+* https://github.com/openshift/must-gather
+
 * One archive to rule them all
 
 * Bundle vital cluster information and logs
 
 * Extendible with plugins
+
+![log bundle](imgs/log-bundle.jpeg)
 
 Note:
 
