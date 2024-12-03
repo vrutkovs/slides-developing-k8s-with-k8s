@@ -35,15 +35,16 @@ has quickly hit its limitations. As a result, a new system to tailor to k8s-spec
 needs was created.
 
 ---
+<!-- .slide: class="two-floating-elements" -->
 ### Prow - pull request-based CI/CD
-
-![prow logo](imgs/prow.png)
 
 * CRD-based system to schedule jobs
 
 * Multicluster-capable
 
 * Extendable with plugins
+
+![prow logo](imgs/prow.png)
 
 Note:
 
@@ -54,14 +55,12 @@ clusters and can be extended with plugins or other controllers.
 ---
 ### Prow - schedule tests
 
-
-![labels](imgs/prow-checks.png)
-
 * Run additional tests using `/test` command
 
 * Mark tests as required/optional
 
 * Pre-submit/post-submit/periodic jobs
+![labels](imgs/prow-checks.png)
 
 Note:
 
@@ -71,12 +70,10 @@ GUI users can run additional tests or rerun failures effortlessly.
 ---
 ### Prow - labels
 
-
-![labels](imgs/labels.png)
-
 * Set PR metadata via comments
 
 * Permissions via OWNERS file
+![labels](imgs/labels.png)
 
 Note:
 
@@ -110,22 +107,21 @@ Note:
 ---
 ### Tide - merge
 
-![approve and lgtm](imgs/tide-merge.png)
-
 * Double testing - once on PR pushes, once on merge
 
 * Apply PR to latest master when PR is being merged
 
 * Batch merging
+![approve and lgtm](imgs/tide-merge.png)
 
 Note:
 
 ---
 ### Test Grid
 
+Show job pass/fail history down to test cases
 ![testgrid](imgs/testgrid.png)
 
-Show job pass/fail history down to test cases
 
 Note:
 
@@ -148,14 +144,16 @@ Note:
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### OpenShift - k8s distribution
 
 ```
-I’d just like to interject for a moment. What you’re refering to as k8s, is in fact, CNCF/K8s, or 
-as I’ve recently taken to calling it, CNCF plus K8S. K8s is not a private cloud itself, 
-but rather another free component of a fully functioning CNCF system made useful by the CNCF components 
-comprising a full private cloud.
+I’d just like to interject for a moment. 
+What you’re refering to as k8s, is in fact, CNCF/K8s, or 
+as I’ve recently taken to calling it, CNCF plus K8S. 
+K8s is not a private cloud itself, 
+but rather another free component of 
+a fully functioning CNCF system made useful 
+by the CNCF components comprising a full private cloud.
 ```
 
 Note:
