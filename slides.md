@@ -20,17 +20,11 @@ vrutkovs@redhat.com
 Note:
 
 My dayjob is working on control plane components - kube-apiserver mostly, but along the way I 
-contribute to several other projects and k8s components.
+contribute to several other projects and k8s components. Lets dive in how these components 
+are being developed, tested and assembled into distributions.
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Kubernetes runs pods
-
-* Great for ebb-and-flow workflows like CI runs
-
-* Not usable on its own, needs a system like Jenkins/Gitlab
-
-* Needs deep integration w/ k8s
 
 ![meme](imgs/k8s-runs-pods.jpg)
 
@@ -63,12 +57,16 @@ clusters and can be extended with plugins or other controllers.
 
 ![labels](imgs/prow-checks.png)
 
-* Run required/optional tests
+* Run additional tests using `/test` command
 
+* Mark tests as required/optional
 
-
+* Pre-submit/post-submit/periodic jobs
 
 Note:
+
+Prow allows working with CI via pull request comments - accessible to everyone. Instead of 
+GUI users can run additional tests or rerun failures effortlessly.
 
 ---
 ### Prow - labels
@@ -78,11 +76,13 @@ Note:
 
 * Set PR metadata via comments
 
-* Run additional tests using `/test` command
-
 * Permissions via OWNERS file
 
 Note:
+
+Most important Prow feature is ability to manage CI for the repo without administrative permissions.
+Users are authorized via OWNERS file and similar to k8s labels PR labels are metadata: i.e. 
+'needs-ok-to-test' guards against malicious contributors, `hold` means prevent merging etc. 
 
 ---
 ### Tide - labels
@@ -92,9 +92,25 @@ Note:
 
 Note:
 
+Tide is a component which performs merging of the PR: it waits for PR to have required tests 
+passing and required labels present. Until then it shows a page where rules are explained.
+
 ---
 <!-- .slide: class="two-floating-elements" -->
+### Tide - double approve
+
+* `/approve` - high level agreement that a change makes sense
+
+* `/lgtm` - code works and looks good
+
+![approve and lgtm](imgs/approve-lgtm.png)
+
+Note:
+
+---
 ### Tide - merge
+
+![approve and lgtm](imgs/tide-merge.png)
 
 * Double testing - once on PR pushes, once on merge
 
@@ -105,37 +121,23 @@ Note:
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
-### Tide - double approve
+### Test Grid
 
-* `/approve` - high level agreement that a change makes sense
+![testgrid](imgs/testgrid.png)
 
-* `/lgtm` - code works and looks good
+Show job pass/fail history down to test cases
 
 Note:
 
 ---
 <!-- .slide: class="two-floating-elements" -->
-### Boskos - resource manager
+### Boskos
+
+* Resource manager similar to k8s leases
 
 * Ensure that test runs don't spend too much cloud bill
 
 * Balance test runs across clouds
-
-Note:
-
----
-<!-- .slide: class="two-floating-elements" -->
-### Prow Periodic Jobs
-
-* Run tests on schedule
-
-Note:
-
----
-### Test Grid
-
-![testgrid](imgs/testgrid.png)
 
 Note:
 
@@ -277,8 +279,9 @@ Drink from the cup, not the firehose!
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### What's this famous for?
+
+![Guiness](imgs/guiness.jpg)
 
 Note:
 
@@ -303,6 +306,12 @@ Note:
 ---
 <!-- .slide: class="two-floating-elements" -->
 ### Summary
+
+* CI is a lot more than "run tests"
+
+* Help tools to help you
+
+* Lies, damned lies and statistics
 
 Note:
 

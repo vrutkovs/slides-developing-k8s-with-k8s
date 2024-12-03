@@ -3,13 +3,15 @@
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
+  align-content: center;
 }
 
 .reveal section.two-floating-elements {
   grid-template-columns: auto 30%;
+  grid-template-rows: 110px auto;
 }
 
-.two-floating-elements {
+section.two-floating-elements {
   > ul {
     grid-row-start: 2;
     grid-row-end: 2;
@@ -18,5 +20,16 @@
     grid-column-start: 2;
     grid-row-start: 2;
     float:right;
+  }
+}
+
+.reveal section:not([two-floating-elements]) {
+  grid-template-columns: auto;
+  grid-template-rows: 110px auto;
+}
+
+section:not([two-floating-elements]) {
+  > p {
+    overflow: auto;
   }
 }
