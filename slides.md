@@ -24,9 +24,10 @@ contribute to several other projects and k8s components. Lets dive in how these 
 are being developed, tested and assembled into distributions.
 
 ---
-### Kubernetes runs pods
+### How the sausage gets made
 
-![meme](imgs/k8s-runs-pods.jpg)
+![sausage](imgs/sausage.jpg)
+
 
 Note:
 
@@ -140,27 +141,13 @@ Note:
 ---
 ### Intermission
 
-
-Note:
-
----
-### OpenShift - k8s distribution
-
-```
-I’d just like to interject for a moment. 
-What you’re refering to as k8s, is in fact, CNCF/K8s, or 
-as I’ve recently taken to calling it, CNCF plus K8S. 
-K8s is not a private cloud itself, 
-but rather another free component of 
-a fully functioning CNCF system made useful 
-by the CNCF components comprising a full private cloud.
-```
+![meme](imgs/k8s-runs-pods.jpg)
 
 Note:
 
 ---
 <!-- .slide: class="two-floating-elements" -->
-### Same, but different
+### OpenShift - k8s distribution
 
 * Additional components - builds, images, routes
 
@@ -238,6 +225,29 @@ Note:
 
 Note:
 
+
+---
+<!-- .slide: class="two-floating-elements" -->
+### Test results page
+
+* Pass / failed / flake tests
+
+* Links to test artifacts / job history
+![test run](imgs/test-run.jpg)
+
+Note:
+
+---
+<!-- .slide: class="two-floating-elements" -->
+### Intervals chart
+
+* Visualize events and their duration
+
+* Find correlations between events
+![intervals](imgs/intervals.png)
+
+Note:
+
 ---
 <!-- .slide: class="two-floating-elements" -->
 ### Aggregating logs - Loki
@@ -247,6 +257,7 @@ Note:
 * Includes logs no longer present in must-gather
 
 * Compare logs across multiple runs
+![loki](imgs/loki.png)
 
 Note:
 
@@ -255,52 +266,69 @@ Note:
 ### Fetching metrics - PromeCIeus
 
 * Spawn new Prometheus from test cluster metrics
+![promeCIeus](imgs/promecieus.png)
 
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
-### Aggregating logs and issues
+### "Has this error been reported?"
 
-* Which jobs are affected and when it started happening?
+![search-ci](imgs/search-list.png)
 
+---
+### When did that start happening?
+
+![chart](imgs/search-chart.png)
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### One app to rule them all - sippy
 
 Drink from the cup, not the firehose!
 
-Note:
-
----
-### What's this famous for?
-
-![Guiness](imgs/guiness.jpg)
+![sippy](imgs/sippy.png)
 
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+### What's this pokemon?
+
+![Guiness blurred](imgs/guinness-blurred.jpg)
+
+Note:
+
+---
+### What's this pokemon?
+
+![Guiness](imgs/guinness.jpg)
+
+Note:
+
+---
 ### Student and Fisher
 
+* Student's statistical significance
+
+* Fisher's exact test
+![statistics](imgs/statistics.png)
+
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Finding regressions
 
+![regression report](imgs/regression.png)
+
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Component readiness
 
+![component readiness](imgs/component-readiness.png)
+
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Summary
 
 * CI is a lot more than "run tests"
@@ -312,7 +340,7 @@ Note:
 Note:
 
 ---
-### Thanks + Questions
+## Thanks + Questions
 
 Find me at https://vrutkovs.eu
 
