@@ -1,10 +1,7 @@
-## Developing Kubernetes with Kubernetes
-<br>
-<br>
-<br>
-Vadim Rutkovsky
+<!-- .slide: class="image-only" -->
+#   
 
-vrutkovs@redhat.com
+![title](imgs/title.png)
 
 ---
 <!-- .slide: class="two-floating-elements" -->

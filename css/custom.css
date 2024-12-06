@@ -23,7 +23,12 @@ section.two-floating-elements {
   }
 }
 
-.reveal section:not([two-floating-elements]) {
+section.image-only {
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+}
+
+.reveal section:not([two-floating-elements image-only]) {
   grid-template-columns: auto;
   grid-template-rows: 110px auto;
 }
