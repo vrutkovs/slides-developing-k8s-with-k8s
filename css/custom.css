@@ -27,6 +27,9 @@ section.two-floating-elements {
   grid-template-columns: auto;
   grid-template-rows: 110px auto;
 }
+.reveal section.image-only img {
+  max-height: 600px;
+}
 
 .reveal section.image-only p {
   margin: 0px;

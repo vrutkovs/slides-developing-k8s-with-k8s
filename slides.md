@@ -52,7 +52,6 @@ jobs to run are encoded as k8s Custom Resources, it can natively schedule jobs a
 clusters and can be extended with plugins or other controllers.
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Prow - schedule tests
 
 * Run additional tests using `/test` command
@@ -60,7 +59,6 @@ clusters and can be extended with plugins or other controllers.
 * Mark tests as required/optional
 
 * Pre-submit/post-submit/periodic jobs
-
 ![labels](imgs/prow-checks.png)
 
 Note:
@@ -69,13 +67,11 @@ Prow allows working with CI via pull request comments - accessible to everyone. 
 GUI users can run additional tests or rerun failures effortlessly.
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Prow - labels
 
 * Set PR metadata via comments
 
 * Permissions via OWNERS file
-
 ![labels](imgs/labels.png)
 
 Note:
@@ -87,7 +83,6 @@ Users are authorized via OWNERS file and similar to k8s labels PR labels are met
 ---
 <!-- .slide: class="image-only" -->
 ### Tide - labels
-
 
 ![tide labels](imgs/tide-labels.png)
 
@@ -109,7 +104,6 @@ passing and required labels present. Until then it shows a page where rules are 
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### Tide - merge
 
 * Double testing - once on PR pushes, once on merge
@@ -117,7 +111,6 @@ Note:
 * Apply PR to latest master when PR is being merged
 
 * Batch merging
-
 ![approve and lgtm](imgs/tide-merge.png)
 
 Note:
@@ -153,7 +146,6 @@ Note:
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
 ### OpenShift - k8s distribution
 
 * Additional components - builds, images, routes
@@ -300,6 +292,8 @@ Note:
 
 ---
 ### One app to rule them all - sippy
+
+Too many jobs? Failures here and there?
 
 Drink from the cup, not the firehose!
 
