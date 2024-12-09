@@ -7,8 +7,8 @@
 }
 
 .reveal section.two-floating-elements {
-  grid-template-columns: auto 30%;
-  grid-template-rows: 110px auto;
+  grid-template-columns: fit-content(50%) fit-content(50%);
+  grid-template-rows: 110px fit-content(50%);
 }
 
 section.two-floating-elements {

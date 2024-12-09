@@ -52,6 +52,7 @@ jobs to run are encoded as k8s Custom Resources, it can natively schedule jobs a
 clusters and can be extended with plugins or other controllers.
 
 ---
+<!-- .slide: class="two-floating-elements" -->
 ### Prow - schedule tests
 
 * Run additional tests using `/test` command
@@ -59,6 +60,7 @@ clusters and can be extended with plugins or other controllers.
 * Mark tests as required/optional
 
 * Pre-submit/post-submit/periodic jobs
+
 ![labels](imgs/prow-checks.png)
 
 Note:
@@ -67,11 +69,13 @@ Prow allows working with CI via pull request comments - accessible to everyone. 
 GUI users can run additional tests or rerun failures effortlessly.
 
 ---
+<!-- .slide: class="two-floating-elements" -->
 ### Prow - labels
 
 * Set PR metadata via comments
 
 * Permissions via OWNERS file
+
 ![labels](imgs/labels.png)
 
 Note:
@@ -81,6 +85,7 @@ Users are authorized via OWNERS file and similar to k8s labels PR labels are met
 'needs-ok-to-test' guards against malicious contributors, `hold` means prevent merging etc. 
 
 ---
+<!-- .slide: class="image-only" -->
 ### Tide - labels
 
 
@@ -104,6 +109,7 @@ passing and required labels present. Until then it shows a page where rules are 
 Note:
 
 ---
+<!-- .slide: class="two-floating-elements" -->
 ### Tide - merge
 
 * Double testing - once on PR pushes, once on merge
@@ -111,11 +117,13 @@ Note:
 * Apply PR to latest master when PR is being merged
 
 * Batch merging
+
 ![approve and lgtm](imgs/tide-merge.png)
 
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### Test Grid
 
 Show job pass/fail history down to test cases
