@@ -5,7 +5,7 @@
 
 ---
 <!-- .slide: class="two-floating-elements" -->
-### `whoami`
+### `kubectl auth whoami`
 
 * Principal software engineer living in Czech Republic.
 
