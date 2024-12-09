@@ -21,6 +21,7 @@ contribute to several other projects and k8s components. Lets dive in how these 
 are being developed, tested and assembled into distributions.
 
 ---
+<!-- .slide: class="image-only" -->
 ### Continous Development
 
 ![ci-cd](imgs/ci-cd.jpg)
@@ -136,6 +137,7 @@ Note:
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### Intermission
 
 ![meme](imgs/k8s-runs-pods.jpg)
@@ -154,16 +156,18 @@ Note:
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+<!-- .slide: class="image-only" -->
 ### OpenShift payload
 
 * An image pointing to other components
 
 * Contains an operator which applies components
 ![payload](imgs/openshift-payload.png)
+
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### Release controller
 
 * Displays available official / nightly versions
@@ -173,6 +177,7 @@ Note:
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### Blocking / informing jobs
 
 Not all jobs are created equal
@@ -181,18 +186,19 @@ Not all jobs are created equal
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+<!-- .slide: class="image-only" -->
 ### Cluster bot
 
-Slack bot to spawn clusters. Can run adhoc tests, build custom releases
+* Slack bot to spawn clusters. 
+
+* Can run adhoc tests, build custom releases
 ![blocking](imgs/cluster-bot.png)
+
 Note:
 
 ---
 <!-- .slide: class="two-floating-elements" -->
 ### Must gather
-
-* https://github.com/openshift/must-gather
 
 * One archive to rule them all
 
@@ -205,26 +211,29 @@ Note:
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+<!-- .slide: class="image-only" -->
 ### Kubernetes from static files
 
 * `kubectl get pods` but from a set of yamls
+![kas](imgs/static-kas.png)
 
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+<!-- .slide: class="image-only" -->
 ### Rehearsals
 
 * Who tests the test system?
 
 * Will this change break other repos?
+![whiplash](imgs/whiplash.jpg)
+
 
 Note:
 
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+<!-- .slide: class="image-only" -->
 ### Test results page
 
 * Pass / failed / flake tests
@@ -235,7 +244,7 @@ Note:
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+<!-- .slide: class="image-only" -->
 ### Intervals chart
 
 * Visualize events and their duration
@@ -246,7 +255,7 @@ Note:
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+<!-- .slide: class="image-only" -->
 ### Aggregating logs - Loki
 
 * Systems under test send logs to central log system
@@ -259,20 +268,23 @@ Note:
 Note:
 
 ---
-<!-- .slide: class="two-floating-elements" -->
+<!-- .slide: class="image-only" -->
 ### Fetching metrics - PromeCIeus
 
 * Spawn new Prometheus from test cluster metrics
+
 ![promeCIeus](imgs/promecieus.png)
 
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### "Has this error been reported?"
 
 ![search-ci](imgs/search-list.png)
 
 ---
+<!-- .slide: class="image-only" -->
 ### When did that start happening?
 
 ![chart](imgs/search-chart.png)
@@ -288,6 +300,7 @@ Drink from the cup, not the firehose!
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### What's this pokemon?
 
 ![Guiness blurred](imgs/guinness-blurred.jpg)
@@ -295,6 +308,7 @@ Note:
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### What's this pokemon?
 
 ![Guiness](imgs/guinness.jpg)
@@ -302,6 +316,7 @@ Note:
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### Student and Fisher
 
 * Student's statistical significance
@@ -312,6 +327,7 @@ Note:
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### Finding regressions
 
 ![regression report](imgs/regression.png)
@@ -319,6 +335,7 @@ Note:
 Note:
 
 ---
+<!-- .slide: class="image-only" -->
 ### Component readiness
 
 ![component readiness](imgs/component-readiness.png)
