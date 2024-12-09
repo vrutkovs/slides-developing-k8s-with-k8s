@@ -21,9 +21,9 @@ contribute to several other projects and k8s components. Lets dive in how these 
 are being developed, tested and assembled into distributions.
 
 ---
-### How the sausage gets made
+### Continous Development
 
-![sausage](imgs/sausage.jpg)
+![ci-cd](imgs/ci-cd.jpg)
 
 
 Note:
