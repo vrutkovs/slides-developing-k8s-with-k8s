@@ -318,7 +318,9 @@ Openshift comes included with Prometheus for monitoring various metrics. During 
 
 ![search-ci](imgs/search-list.png)
 
-Note: 
+Note:
+
+Quite often folks are reporting duplicate issues to component owners or unsure if the problem has already been reported. To help with that we index prow job output, helping us quickly find jobs with similar error messages - this helps us find the breadth of the problems. Additionally we index active Jira tickets, so along with test result you can also see if the problem has already been reported too.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -326,6 +328,7 @@ Note:
 
 ![chart](imgs/search-chart.png)
 Note:
+Search app also has a chart view, where one can see when the problem started occurring or has become more common. Here we see this issue happening from time to time previously, but has become more prevalent in last couple of hours.
 
 ---
 ### One app to rule them all - sippy
@@ -337,6 +340,7 @@ Drink from the cup, not the firehose!
 ![sippy](imgs/sippy.png)
 
 Note:
+Openshift currently runs ~40000 prowjobs per days, so its hard to keep up with the state of problems. And - you guessed it - we created another tool to help with that. Introducing Sippy, but first a word from our sponsor.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -346,6 +350,8 @@ Note:
 
 Note:
 
+Anyone knows what this is?
+
 ---
 <!-- .slide: class="image-only" -->
 ### What's this pokemon?
@@ -353,6 +359,7 @@ Note:
 ![Guiness](imgs/guinness.jpg)
 
 Note:
+No, its not just a beer, its Guinness. Its known for maintaining the same taste and quality level over 200 years of its history.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -364,6 +371,9 @@ Note:
 ![statistics](imgs/statistics.png)
 
 Note:
+This kind of quality control would be impossible without work of William Gosset, chief brewer for Guinness in the beginning of 20th centure. under his pen name Student he developed a test to determine whether the change is statistically significant. Based on this work we use 95th percentile.
+
+His colleague Ronald Fisher expanded on his work and created a method to calculate the statistical probability of hypothesis based on this data.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -373,6 +383,10 @@ Note:
 
 Note:
 
+What does any of that has to do with OpenShift? We can use Student's statistical significance to find out whether failures in the job history are important to look into.
+
+Fisher's exact test helps us with probability of it being a regression, so we can set a severity for it.
+
 ---
 <!-- .slide: class="image-only" -->
 ### Component readiness
@@ -380,6 +394,8 @@ Note:
 ![component readiness](imgs/component-readiness.png)
 
 Note:
+
+Now that every job is associated with a cloud provider, CPU architecture and each test has an associated component and we can statistically determine regressions we can build a high-level overview of tests grouped by component. That way each team can get notified about new regressions and their scope. Here we can see that MicroShift deployments are looking good, kubelet has issues on baremetal and kube-apiserver is not a happy bunny across every cloud platform.
 
 ---
 ### Summary
@@ -391,6 +407,14 @@ Note:
 * Lies, damned lies and statistics
 
 Note:
+
+Now time to wrap up, here's what we learned - CI is a treasure trove of release information.
+
+Building tools helps developers feel engaged and custom tools are usually helping developers be much more productive.
+
+And finally, statistics may be fantastic source of new information, but it requires a careful interpretation.
+
+And that's all I have for today, thank you, hopefully there are some questions?
 
 ---
 ## Thanks + Questions
