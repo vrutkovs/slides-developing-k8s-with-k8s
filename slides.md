@@ -191,7 +191,8 @@ As I mentioned previously Openshift is centered around operators, which is a sig
 ![release controller](imgs/release-controller.png)
 
 Note:
-Since Openshift has different release artifacts this also requires a different release controller. This is a custom app, tracking different Openshift releases (represented by ImageStreams) and groups them by version, displaying test information alongside.
+Since Openshift has different release artifacts this also requires a different release controller. This is a custom app, tracking different Openshift releases (represented by ImageStreams) and groups them by version, displaying test information alongside. Here releases are considered "rejected" when 
+important tests are not passing and a new nightly is delayed.
 
 ---
 <!-- .slide: class="image-only" -->
