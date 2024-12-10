@@ -201,8 +201,8 @@ Not all jobs are created equal
 ![blocking](imgs/blocking-jobs.png)
 
 Note:
-Some jobs are more important than the others, say if some test starts failing on s390x architecture tests we won't stop producing nightlies. However support on major cloud providers is critical, so these tests are marked as release blocking. Note that some tests are aggregated, meaning this prowjob
-is spawning 10 more prowjobs and aggregates their result to avoid random infrastructure failures.
+Some jobs are more important than the others, say if some exotic configuration test starts failing we won't stop producing nightlies. However support on major cloud providers is critical, so these tests are marked as release blocking. Note that some tests are aggregated, meaning this prowjob
+is spawning 10 more prowjobs and aggregates their results to avoid random infrastructure failures.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -214,8 +214,8 @@ is spawning 10 more prowjobs and aggregates their result to avoid random infrast
 ![blocking](imgs/cluster-bot.png)
 
 Note:
-Onboarding new engineers is hard, so in order to simplify internal adoption one of the first things we've created is prowjob running. This is a Slack bot, which can spawn a temporary cluster without 
-running installer or configuration. Here the bot produces a link to the console, default user and password along with admin kubeconfig.
+Onboarding new engineers is hard, so in order to simplify internal adoption one of the first things we've created is a prowjob runner. This is a Slack bot, which can spawn a temporary cluster without 
+running installer or configuration. Once the requested cluster is ready the bot produces a link to the console, default user and password along with admin kubeconfig.
 
 This bot can also run arbitrary prowjobs and build a custom release applying a set of pull requests on top.
 
@@ -233,9 +233,9 @@ This bot can also run arbitrary prowjobs and build a custom release applying a s
 
 Note:
 
-Another common issue our developers have hit is troubleshooting. Usually customers just give us a random log line and expect us to find the issue in seconds. Sometimes its not that simple, so we 
+Another common issue our developers have hit is troubleshooting. Usually customers just give us a random log line and expect us to find the culprit in seconds. Sometimes its not that simple, so we 
 developed a tool which automatically collects necessary information - cluster version, operator status,
-pod logs, events and such. There are several teams creating additional products on top of OpenShift, so these teams have developed their own must-gather plugins to extend the collected information.
+pod logs, events and such. There are several teams creating additional products on top of OpenShift like Openshift Virtualization, so these teams have developed their own must-gather plugins to extend the collected minimum.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -246,7 +246,7 @@ pod logs, events and such. There are several teams creating additional products 
 
 Note:
 
-Must-gathers however are just archives with enormous amout of YAML and nobody enjoys exploring them. In order to speed up the investigations we've created an app to run a fake kubernetes cluster from must-gather archives. This spawns a kube-like API, so developer can just use `kubectl` and other tools to explore must-gather as if it was a live cluster.
+Must-gathers however are just archives with enormous amount of YAML and nobody enjoys exploring them. In order to speed up the investigations we've created an app to parse must-gather archives and spawn a kube-like API server, so developer can just use `kubectl` and other tools to explore must-gather as if it was a live cluster.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -259,9 +259,9 @@ Must-gathers however are just archives with enormous amout of YAML and nobody en
 
 
 Note:
-Going back to CI now. As mentioned previously Prow is scheduling tests using custom CRDs, fetching its manifests from release git repository. However, updating these manifests is scary as you may accidentally break other teams' jobs.
+Lets step back to CI problems now. As mentioned previously Prow is scheduling tests using custom CRDs, fetching its manifests from release git repository. However, updating these manifests is scary as you may accidentally break other teams' jobs.
 
-This problem was sovled by introducing rehearsals - prow can try the proposed change and run specific tests. Once the tests are passing this PR requires additional approval label - `pj-rehearse ack`.
+This problem was sovled by introducing rehearsals - prow can try the proposed change and run specific tests. Once the tests are passing this PR requires additional approval label - `pj-rehearse ack` - to merge.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -273,7 +273,7 @@ This problem was sovled by introducing rehearsals - prow can try the proposed ch
 ![test run](imgs/test-run.jpg)
 
 Note:
-Another set of customizations was made to the test results page. First lets look into what's displayed there. Below job name and its ID there are links to job history and artifacts page. Next comes a secton with tool links and finally junit pass/failed/flaking tests.
+Another set of customizations was made to the test results page. First lets look into what's displayed there. Below job name and its ID there are links to job history and artifacts page. Next comes a secton with tool links and finally a list of pass/failed/flaking tests.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -299,7 +299,7 @@ One of the commonly used test results tools is intervals chart. Using various so
 ![loki](imgs/loki.png)
 
 Note:
-Another powerfool tool we use in CI is persistent logging. Most test clusters we create are sending logs to central Loki system during their lifetime. Unlike must-gather this helps us with collecting logs from containers which were terminated. Also, LogQL is quite flexible when looking for specific log lines across several containers.
+Another powerfool tool we use in CI is persistent logging. Most test clusters we create are sending logs to central Loki system during their lifetime. Unlike must-gather this helps us with collecting logs from containers which were terminated. Also, LogQL is quite flexible when looking for specific log lines across several containers or even prowjobs.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -310,7 +310,7 @@ Another powerfool tool we use in CI is persistent logging. Most test clusters we
 ![promeCIeus](imgs/promecieus.png)
 
 Note:
-Openshift comes included with Prometheus for monitoring various metrics. During test runs we also store Prometheus DB dump for further inspection. However importing them locally may take some time and effort, so we created a handy app to automatically spawn a temporary Prometheus instance from Prow job URL. This has proven to be particularly useful during pair investigations.
+Openshift comes included with Prometheus for monitoring various metrics. In test artifacts we also store Prometheus DB dump for further inspection. However importing them locally may take some time and effort, so we created a handy app to automatically spawn a temporary Prometheus instance from Prow job URL. This has proven to be particularly useful during pair investigations, as this instance is accessible by multiple engineers.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -320,7 +320,7 @@ Openshift comes included with Prometheus for monitoring various metrics. During 
 
 Note:
 
-Quite often folks are reporting duplicate issues to component owners or unsure if the problem has already been reported. To help with that we index prow job output, helping us quickly find jobs with similar error messages - this helps us find the breadth of the problems. Additionally we index active Jira tickets, so along with test result you can also see if the problem has already been reported too.
+Quite often folks are unsure if the problem has already been reported or report duplicate issues to component owners . To help with that we index prow job output, helping us quickly find jobs with similar error messages - this helps us find the breadth of the problems. Additionally we index active Jira tickets, so along with prowjob result you can also see if the problem has already been reported in the issue tracker too.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -328,7 +328,7 @@ Quite often folks are reporting duplicate issues to component owners or unsure i
 
 ![chart](imgs/search-chart.png)
 Note:
-Search app also has a chart view, where one can see when the problem started occurring or has become more common. Here we see this issue happening from time to time previously, but has become more prevalent in last couple of hours.
+Search app also has a chart view, where one can see when the problem started occurring or has become more frequent. Here we see this issue happening from time to time previously, but has become more prevalent in last couple of hours.
 
 ---
 ### One app to rule them all - sippy
@@ -340,7 +340,7 @@ Drink from the cup, not the firehose!
 ![sippy](imgs/sippy.png)
 
 Note:
-Openshift currently runs ~40000 prowjobs per days, so its hard to keep up with the state of problems. And - you guessed it - we created another tool to help with that. Introducing Sippy, but first a word from our sponsor.
+Openshift currently runs ~40000 prowjobs per day, so its hard to keep up with the state of problems. And - you guessed it - we created another tool to help with that. Introducing Sippy, but first a word from our sponsor.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -371,9 +371,9 @@ No, its not just a beer, its Guinness. Its known for maintaining the same taste 
 ![statistics](imgs/statistics.png)
 
 Note:
-This kind of quality control would be impossible without work of William Gosset, chief brewer for Guinness in the beginning of 20th centure. under his pen name Student he developed a test to determine whether the change is statistically significant. Based on this work we use 95th percentile.
+This kind of quality control would be impossible without work of William Gosset, chief brewer for Guinness in the beginning of 20th century. under his pen name Student he developed a test to determine whether the change is statistically significant. Based on this work we use 95th percentile now, for example.
 
-His colleague Ronald Fisher expanded on his work and created a method to calculate the statistical probability of hypothesis based on this data.
+What does any of that has to do with OpenShift? We can use Student's statistical significance to find out whether failures in the job history are important to look into.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -383,7 +383,7 @@ His colleague Ronald Fisher expanded on his work and created a method to calcula
 
 Note:
 
-What does any of that has to do with OpenShift? We can use Student's statistical significance to find out whether failures in the job history are important to look into.
+Gosset's colleague Ronald Fisher expanded on his work and created a method to calculate the statistical probability of hypothesis based on this data.
 
 Fisher's exact test helps us with probability of it being a regression, so we can set a severity for it.
 
@@ -395,7 +395,7 @@ Fisher's exact test helps us with probability of it being a regression, so we ca
 
 Note:
 
-Now that every job is associated with a cloud provider, CPU architecture and each test has an associated component and we can statistically determine regressions we can build a high-level overview of tests grouped by component. That way each team can get notified about new regressions and their scope. Here we can see that MicroShift deployments are looking good, kubelet has issues on baremetal and kube-apiserver is not a happy bunny across every cloud platform.
+Now that every job is associated with a cloud provider, CPU architecture, topology and such - and each test has an associated component and we can statistically determine regressions we can build a high-level overview of tests grouped by component. That way each team can get notified about new regressions and their scope. Here we can see that MicroShift deployments are looking good, kubelet has regressions on baremetal and kube-apiserver is not a happy bunny across every cloud platform.
 
 ---
 ### Summary
@@ -408,7 +408,7 @@ Now that every job is associated with a cloud provider, CPU architecture and eac
 
 Note:
 
-Now time to wrap up, here's what we learned - CI is a treasure trove of release information.
+Now its time to wrap up, here's what we learned - CI is a treasure trove of release information.
 
 Building tools helps developers feel engaged and custom tools are usually helping developers be much more productive.
 
