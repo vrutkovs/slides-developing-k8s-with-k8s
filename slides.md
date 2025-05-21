@@ -42,14 +42,20 @@ Few words about Red Hat as a company. As you might know, we position ourselves a
 ---
 <!-- .slide: class="two-floating-elements" -->
 
-## This talk is
+## Next up
 
 * Upstream/downstream tools
 
 * Why we need them
 
-* 
+* How they enhance standard techniques
 
+![Spoilers](imgs/spoiler-alert.jpg)
+
+Note:
+
+In this talk I'll attempt to show how development of Kubernetes is using standard best practices, but enhanced with custom tools the community created to simplify some problems we've hit along the way.
+I'll also describe which Openshift-specific tools we created in Red Hat we created to help us make better open source software. Don't be overwhelmed by the complexity of those topics - I just hope some ideas behind those tools will inspire you to make you own tools to make better software as well - and hopefully these tools would be released under open source license.
 
 ---
 <!-- .slide: class="image-only" -->
