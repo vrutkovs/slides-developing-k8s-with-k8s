@@ -1,7 +1,10 @@
-<!-- .slide: class="image-only" -->
-#
+# Developing k8s with k8s
 
-![title](imgs/title.png)
+
+
+
+
+Vadim Rutkovsky, Red Hat
 
 ---
 <!-- .slide: class="two-floating-elements" -->
@@ -140,6 +143,8 @@ On this picture you can see that the test has failed a few times previously but 
 * Ensure that test runs don't spend too much cloud bill
 
 * Balance test runs across clouds
+
+![shepherd](imgs/shepherd.jpg)
 
 Note:
 
