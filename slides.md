@@ -1,5 +1,5 @@
 <!-- .slide: class="image-only" -->
-#   
+#
 
 ![title](imgs/title.png)
 
@@ -16,13 +16,13 @@
 
 Note:
 
-My dayjob is working on control plane components - kube-apiserver mostly, but along the way I 
-contribute to several other projects and k8s components. Let's dive in how these components 
+My dayjob is working on control plane components - kube-apiserver mostly, but along the way I
+contribute to several other projects and k8s components. Let's dive in how these components
 are being developed, tested and assembled into distributions.
 
 ---
 <!-- .slide: class="image-only" -->
-### Continous Development
+### Continuous Development
 
 ![ci-cd](imgs/ci-cd.jpg)
 
@@ -31,8 +31,8 @@ Note:
 
 Similar to all modern projects Kubernetes has long adopted Continuous Integration approach.
 
-Back in early days of k8s development CI system of choice was Jenkins, but SIG Testing 
-has quickly hit its limitations. As a result, a new system to tailor to k8s-specific 
+Back in early days of k8s development CI system of choice was Jenkins, but SIG Testing
+has quickly hit its limitations. As a result, a new system to tailor to k8s-specific
 needs was created.
 
 ---
@@ -49,8 +49,8 @@ needs was created.
 
 Note:
 
-Unlike most CI/CD systems, Prow doesn't have a Web UI to show. Its CRD-based system, where 
-jobs to run are encoded as k8s Custom Resources, it can natively schedule jobs across multiple 
+Unlike most CI/CD systems, Prow doesn't have a Web UI to show. Its CRD-based system, where
+jobs to run are encoded as k8s Custom Resources, it can natively schedule jobs across multiple
 clusters and can be extended with plugins or additional controllers.
 
 ---
@@ -87,7 +87,7 @@ Following kubernetes patterns Prow heavily relies on labels, as most important p
 
 Note:
 
-Tide is a component which performs merging of the PR: it waits for PR to have required tests 
+Tide is a component which performs merging of the PR: it waits for PR to have required tests
 passing and required labels present. Until then it shows a page where rules are explained and accessible to every contributor.
 
 ---
@@ -128,7 +128,7 @@ Show job pass/fail history down to test cases
 
 Note:
 
-Now that we have multiple test jobs and suites running its useful to visualize their history. This is facilitated by TestGrid - an application which parses prow job results, including separate junit tests, and displays them as a grid, so that we could spot regressions and find their source easily. 
+Now that we have multiple test jobs and suites running its useful to visualize their history. This is facilitated by TestGrid - an application which parses prow job results, including separate junit tests, and displays them as a grid, so that we could spot regressions and find their source easily.
 On this picture you can see that the test has failed a few times previously but then recovered.
 
 ---
@@ -143,7 +143,7 @@ On this picture you can see that the test has failed a few times previously but 
 
 Note:
 
-In order to avoid paying for test machines too much another component ensures a limited amount of machines is being created. Boskos (from Greek word shepard) requires a job to receive a lease (similar to Kubernetes leader election leases) out of the available pool or wait until such lease is available.
+In order to avoid paying for test machines too much another component ensures a limited amount of machines is being created. Boskos (from Greek word shepherd) requires a job to receive a lease (similar to Kubernetes leader election leases) out of the available pool or wait until such lease is available.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -165,7 +165,7 @@ Kubernetes as a project has a small set of delivered artifacts and even less so 
 
 Note:
 
-Openshift is an opinionated k8s distribution, which is based around a pattern of operators. The operator pattern is a way to structure programs so that one application - operator - would continuously manage the lifecycle of another program - operand. Unlike vanilla k8s Openshift has batteries included - it already comes with Ingress, Network Plugin, Console and so on. 
+Openshift is an opinionated k8s distribution, which is based around a pattern of operators. The operator pattern is a way to structure programs so that one application - operator - would continuously manage the lifecycle of another program - operand. Unlike vanilla k8s Openshift has batteries included - it already comes with Ingress, Network Plugin, Console and so on.
 
 However, Openshift relies heavily on k8s, so development process is designed to be as close to upstream k8s as possible (and vice versa) - we the same Prow, Tide and TestGrid tools as well.
 
@@ -191,7 +191,7 @@ As I mentioned previously Openshift is centered around operators, which is a sig
 ![release controller](imgs/release-controller.png)
 
 Note:
-Since Openshift has different release artifacts this also requires a different release controller. This is a custom app, tracking different Openshift releases (represented by ImageStreams) and groups them by version, displaying test information alongside. Here releases are considered "rejected" when 
+Since Openshift has different release artifacts this also requires a different release controller. This is a custom app, tracking different Openshift releases (represented by ImageStreams) and groups them by version, displaying test information alongside. Here releases are considered "rejected" when
 important tests are not passing and a new nightly is delayed.
 
 ---
@@ -209,13 +209,13 @@ is spawning 10 more prowjobs and aggregates their results to avoid random infras
 <!-- .slide: class="image-only" -->
 ### Cluster bot
 
-* Slack bot to spawn clusters. 
+* Slack bot to spawn clusters.
 
 * Can run adhoc tests, build custom releases
 ![blocking](imgs/cluster-bot.png)
 
 Note:
-Onboarding new engineers is hard, so in order to simplify internal adoption one of the first things we've created is a prowjob runner. This is a Slack bot, which can spawn a temporary cluster without 
+Onboarding new engineers is hard, so in order to simplify internal adoption one of the first things we've created is a prowjob runner. This is a Slack bot, which can spawn a temporary cluster without
 running installer or configuration. Once the requested cluster is ready the bot produces a link to the console, default user and password along with admin kubeconfig.
 
 This bot can also run arbitrary prowjobs and build a custom release applying a set of pull requests on top.
@@ -228,13 +228,13 @@ This bot can also run arbitrary prowjobs and build a custom release applying a s
 
 * Bundle vital cluster information and logs
 
-* Extendible with plugins
+* Extendable with plugins
 
 ![log bundle](imgs/log-bundle.jpeg)
 
 Note:
 
-Another common issue our developers have hit is troubleshooting. Usually customers just give us a random log line and expect us to find the culprit in seconds. Sometimes its not that simple, so we 
+Another common issue our developers have hit is troubleshooting. Usually customers just give us a random log line and expect us to find the culprit in seconds. Sometimes its not that simple, so we
 developed a tool which automatically collects necessary information - cluster version, operator status,
 pod logs, events and such. There are several teams creating additional products on top of OpenShift like Openshift Virtualization, so these teams have developed their own must-gather plugins to extend the collected minimum.
 
@@ -262,7 +262,7 @@ Must-gathers however are just archives with enormous amount of YAML and nobody e
 Note:
 Lets step back to CI problems now. As mentioned previously Prow is scheduling tests using custom CRDs, fetching its manifests from release git repository. However, updating these manifests is scary as you may accidentally break other teams' jobs.
 
-This problem was sovled by introducing rehearsals - prow can try the proposed change and run specific tests. Once the tests are passing this PR requires additional approval label - `pj-rehearse ack` - to merge.
+This problem was solved by introducing rehearsals - prow can try the proposed change and run specific tests. Once the tests are passing this PR requires additional approval label - `pj-rehearse ack` - to merge.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -274,7 +274,7 @@ This problem was sovled by introducing rehearsals - prow can try the proposed ch
 ![test run](imgs/test-run.jpg)
 
 Note:
-Another set of customizations was made to the test results page. First lets look into what's displayed there. Below job name and its ID there are links to job history and artifacts page. Next comes a secton with tool links and finally a list of pass/failed/flaking tests.
+Another set of customizations was made to the test results page. First lets look into what's displayed there. Below job name and its ID there are links to job history and artifacts page. Next comes a section with tool links and finally a list of pass/failed/flaking tests.
 
 ---
 <!-- .slide: class="image-only" -->
@@ -347,7 +347,7 @@ Openshift currently runs ~40000 prowjobs per day, so its hard to keep up with th
 <!-- .slide: class="image-only" -->
 ### What's this pokemon?
 
-![Guiness blurred](imgs/guinness-blurred.jpg)
+![Guinness blurred](imgs/guinness-blurred.jpg)
 
 Note:
 
@@ -357,7 +357,7 @@ Anyone knows what this is?
 <!-- .slide: class="image-only" -->
 ### What's this pokemon?
 
-![Guiness](imgs/guinness.jpg)
+![Guinness](imgs/guinness.jpg)
 
 Note:
 No, its not just a beer, its Guinness. Its known for maintaining the same taste and quality level over 200 years of its history.
