@@ -175,6 +175,22 @@ Openshift is an opinionated k8s distribution, which is based around a pattern of
 However, Openshift relies heavily on k8s, so development process is designed to be as close to upstream k8s as possible (and vice versa) - we the same Prow, Tide and TestGrid tools as well.
 
 ---
+### OKD - community version
+
+* No strings attached - free as in beer
+
+* CentOS Stream instead of RHEL
+
+* You can participate in development too
+
+![okd](imgs/okd-panda.png)
+
+Note:
+
+Alongside Openshift Container Platform we also work on a community offering - OKD. This is the same openshift repacked to use CentOS Stream instead of RHEL and doesn't require any kind of subscription. Both are open source,
+but OKD is more experimental and thus is not being officially supported. Its development is led by a team of volunteers, so you can join and see and participate in the process yourself.
+
+---
 <!-- .slide: class="image-only" -->
 ### OpenShift payload
 
