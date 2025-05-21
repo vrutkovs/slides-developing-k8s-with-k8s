@@ -387,6 +387,7 @@ Note:
 Search app also has a chart view, where one can see when the problem started occurring or has become more frequent. Here we see this issue happening from time to time previously, but has become more prevalent in last couple of hours.
 
 ---
+<!-- .slide: class="image-only" -->
 ### One app to rule them all - sippy
 
 Too many jobs? Failures here and there?
