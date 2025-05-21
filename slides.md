@@ -24,6 +24,34 @@ contribute to several other projects and k8s components. Let's dive in how these
 are being developed, tested and assembled into distributions.
 
 ---
+<!-- .slide: class="two-floating-elements" -->
+## Red Hat
+
+* THE opensource company
+
+* Selling services, not software
+
+* Helps communities grow by making things popular
+
+![Red Hat](imgs/red-hat-logo.png)
+
+Note:
+
+Few words about Red Hat as a company. As you might know, we position ourselves as _the_ opensource company, meaning every product we make is open. Also, we do not charge for the software itself, but we charge for services around it - training, consulting, support etc. An important part of our secret is community - be it developer community, partner community or community of open source users in general. Some of the projects we've helped growing over almost 30 years are linux distributions, kernel virtualization, linux containers, configuration management and container orchestration
+
+---
+<!-- .slide: class="two-floating-elements" -->
+
+## This talk is
+
+* Upstream/downstream tools
+
+* Why we need them
+
+* 
+
+
+---
 <!-- .slide: class="image-only" -->
 ### Continuous Development
 
