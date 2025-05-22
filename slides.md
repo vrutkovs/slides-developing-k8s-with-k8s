@@ -478,4 +478,5 @@ And that's all I have for today, thank you, hopefully there are some questions?
 
 Find me at https://vrutkovs.eu
 
-https://vrutkovs.github.io/slides-developing-k8s-with-k8s/
+###### https://vrutkovs.github.io/slides-developing-k8s-with-k8s/
+###### No "artificial intelligence" tools, LLMs, or other AI slop were used in this talk
